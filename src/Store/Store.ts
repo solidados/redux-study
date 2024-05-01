@@ -1,33 +1,10 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
+import { cashReducer } from './cashReducer.ts';
+import { customerReducer } from './customerReducer.ts';
 
-export type InitStateType = {
-  cash: number;
-};
+const rootReducer = combineReducers({
+  cash: cashReducer,
+  customer: customerReducer,
+})
 
-export type ActionType = {
-  type: string;
-  payload: number;
-};
-
-// const action: ActionType = {
-//   type: "",
-//   payload: 0,
-// };
-
-const initialState: InitStateType = {
-  cash: 0,
-};
-
-
-const reducer = (state: InitStateType = initialState, action: ActionType) => {
-  switch (action.type) {
-    case "CREDIT_CASH":
-      return { ...state, cash: state.cash + action.payload as number };
-    case "DEBIT_CASH":
-      return { ...state, cash: state.cash - action.payload as number };
-    default:
-      return state;
-  }
-};
-
-export const store = createStore(reducer);
+export const store = createStore(rootReducer);
