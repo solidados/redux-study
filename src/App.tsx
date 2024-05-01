@@ -1,12 +1,12 @@
+import { ReactElement } from 'react';
+import CashCounter from './components/CashCounter.tsx';
+
 import "./App.css";
 
-function App() {
+function App(): ReactElement {
   return (
     <div className={"app"}>
-      <div style={{ display: "flex" }}>
-        <button>Credit</button>
-        <button>Debit</button>
-      </div>
+      <CashCounter />
     </div>
   );
 }
