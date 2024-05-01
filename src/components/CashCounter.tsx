@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CashDefaultStateType } from '../Store/types/reducer.types.ts';
 
-import { InitStateType } from '../Store/Store.ts';
 import Button from '../ui/Button.tsx';
 
 
 const CashCounter = (): ReactElement => {
   const dispatch = useDispatch();
-  const cash: number = useSelector((state: InitStateType) => state.cash);
+  const cashState: CashDefaultStateType = useSelector((state: { cash: CashDefaultStateType }) => state.cash);
+  const cash: number = cashState.cash;
   
   const debitCash = (cash: number): void => {
     dispatch({ type: "DEBIT_CASH", payload: cash });
