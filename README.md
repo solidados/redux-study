@@ -1,1 +1,1 @@
-# redux-study
+# Redux
